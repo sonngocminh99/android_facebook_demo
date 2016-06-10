@@ -1,196 +1,299 @@
-# Facebookサンプルについて
+# 【Android】アプリにFacebookログイン機能をつけよう！
+![画像1](/readme-img/Screen1.png)
 
-スマホアプリってデータを保存したいということって何って思われますね。
-実は色々場面で使われています。例えば、ゲームアプリだとスコアをユーザ間共有したり、写真アプリだと画像をどこかに保存したいしたり、そのようなことですね！
+## 概要
+* [ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)の『SNS連携（Facebook連携）』を利用して、Facebookのログイン機能を実装したサンプルプロジェクトです。
+* Facebook連携で取得した会員データは[ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)の『会員管理機能』として扱うことができます。
+ * [【Android】アプリのログイン機能](https://github.com/ncmbadmin/android_login_demo)も用意していますので、参照ください。
+* このコンテンツは簡単な操作ですぐに [ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)の機能を体験いただけます。
 
-うちのサービス [ニフティクラウド mobile backend - mBaaS](http://mb.cloud.nifty.com/) というものを提供していて、初心者でも、数行のコードですぐデータ保存できちゃいますので、今回簡単に紹介します。今までMonacaで見てくれている方が多いかと思いますが、今回はAndroidという切り口でやってみました！
+## ニフティクラウドmobile backendについて
+スマートフォンアプリのバックエンド機能（プッシュ通知・データストア・会員管理・ファイルストア・SNS連携・位置情報検索・スクリプト）が**開発不要**、しかも基本**無料**(注1)で使えるクラウドサービス！今回はデータストアを体験します。
 
-# 作るもの
+注1：詳しくは[こちら](http://mb.cloud.nifty.com/price.htm)をご覧ください。
 
-Android Studioでボタンが一個アプリを作成し、
-ボタンを押したら、データが保存されます。
-イメージ的は以下のようになります。
-![5554_Nexus_5_API_23.png](https://qiita-image-store.s3.amazonaws.com/0/18698/da334246-9887-de61-c43a-fb086d37cfcb.png)
+![画像2](/readme-img/Screen2.png)
 
+## 動作環境
+* Windows 7 Professional
+* Facebook SDK 4.12.1
+* Android Studio 1.5
+* Android ver 4x,5x
 
-# 準備
-
-* Android Studio
-* mBaaSの[アカウント作成](http://mb.cloud.nifty.com/signup.htm)
-
-# 手順
-
-* テンプレートプロジェクトをダウンロード
-* SDKを追加（済み・最新SDKを利用したい場合、更新作業として行ってください）
-* アプリ作成し、キーを設定
-* 動作確認
-
-# STEP 1. テンプレートプロジェクト
-
-* プロジェクトの[Githubページ](https://github.com/ncmbadmin/android_data_demo)から「Download ZIP」をクリックします。
-* プロジェクトを解凍します
-* AndroidStudioを開きます、既存プロジェクトを開くことを選択します。
-
-![5554_Nexus_5_API_23_2.png](https://qiita-image-store.s3.amazonaws.com/0/18698/e6d33cfd-978d-8688-a7ad-de0e9bc90daf.png)
-先ほどダウンロードしたプロジェクトを選択し開きます。
-![androidstudio1.png](https://qiita-image-store.s3.amazonaws.com/0/18698/f1766700-09c9-8b24-b569-997ec9ba5207.png)
+※上記内容で動作確認をしています。
+※古いバージョンだと動作しない可能性があります。
 
 
-# STEP 2. SDKを追加と設定 (済み)
+## 手順
+### 1. [ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)の会員登録とアプリ作成
 
-SDKとはニフティクラウドmobile backendが提供している「データストア」「プッシュ通知」などの機能をAndroidからも簡単にコード書ける（数行ぐらい）ライブラリーのものです。
+* 上記リンクから会員登録（無料）をします。登録ができたらログインをすると下図のように「アプリの新規作成」画面が出るのでアプリを作成します。
 
-![002.png](https://qiita-image-store.s3.amazonaws.com/0/18698/75b7512c-7dec-9931-b8f6-66f6dd5a73af.png)
+![画像3](/readme-img/Screen3.png)
 
-mBaaSでは、Android, iOS, Unity, JavaScript SDKを提供しています。
-今回Android SDKの追加し方と設定を紹介します。
-※ダウンロードしたプロジェクトには既に設定済みですが、最新ではない場合、ご自身で入れ替えてください！またご自身のプロジェクトにもSDKを追加したい場合も同じく実装必要です。
+* アプリ作成されると下図のような画面になります。
+* この２種類のAPIキー（アプリケーションキーとクライアントキー）はAndroidアプリに[ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)を紐付けるために使用します。
 
-* SDKダウンロード
-SDKはここ（SDK[リリースページ](https://github.com/NIFTYCloud-mbaas/ncmb_android/releases)）から取得してください.
-  - NCMB.jarファイルがダウンロードします。
-* SDKをインポート
-  - app/libsフォルダにNCMB.jarをコピーします
-* 設定追加
-  - app/build.gradleファイルに以下を追加します
+![画像4](/readme-img/Screen4.png)
+
+* 動作確認後に会員情報（アクセストークン）が保存される場所も確認しておきましょう。
+
+![画像5](/readme-img/Screen5.png)
+
+### 2. [GitHub](https://github.com/ncmbadmin/android_facebook_demo.git)からサンプルプロジェクトのダウンロード
+
+* プロジェクトの[Githubページ](https://github.com/ncmbadmin/android_facebook_demo.git)から「Download ZIP」をクリックします。
+* プロジェクトを解凍します。
+
+### 3. AndroidStudioでアプリを起動
+
+* AndroidStudioを開きます、解凍プロジェクトを開くことを選択します。
+
+![画像6](/readme-img/Screen6.png)
+
+### 4. APIキーの設定
+
+* `MainActivity.java`を編集します。
+* 先程[ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)のダッシュボード上で確認したAPIキーを貼り付けます。
+
+![画像07](/readme-img/Screen7.png)
+
+* それぞれ`YOUR_APPLICATION_KEY`と`YOUR_CLIENT_KEY`の部分を書き換えます。
+  * このとき、ダブルクォーテーション（`"`）を消さないように注意してください！
+* 書き換え終わったら`command + s`キーで保存をします。
+
+### 5. FacebookSDKを使用するための準備と設定
+
+* [facebook for developers](https://developers.facebook.com/)にログイン（Facebookアカウントがない場合はアカウントを作成して）して、右上の「マイアプリ」からの「新しいアプリを追加」を選択します。
+
+![画像10](/readme-img/Screen10.png)
+
+* Androidを選択し、アプリ名（任意）を入力し、「新しいFacebookアプリIDを作成」をクリックします。
+* 「連絡先メールアドレス」と「カテゴリ」を入力して「アプリIDを作成」をクリックしてFacebookアプリを作成します。
+* Securityチェック欄には質問の対象画像を全て選択し、「確定」をクリックします。
+
+![画像11](/readme-img/Screen11.png)
+
+* 「Quick Start for Android」の画面が出ます。
+* 一番右上の「Skip Quick Start」をクリックします。
+
+![画像12](/readme-img/Screen12.png)
+
+* ダッシュボードが表示されます。
+  * `アプリID`を記憶します。
+
+![画像13](/readme-img/Screen13.png)
+
+* `アプリID`の設定します。
+  * `/app/src/main/res/values/strings.xml`を編集します。
+
+![画像8](/readme-img/Screen8.png)
+
+* またこの`アプリID`は[ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)にも設定します。
+   * 左側のメニューから、「アプリ設定」を開き、SNS連携の設定を開きます。
+   * 連携の許可にチェックを入れた上で、Facebookの開発者向けサイトで発行されたアプリIDを入力してください。
+   * 「保存する」をクリックします。
+
+![画像9](/readme-img/Screen9.png)
+
+* 最後に「アプリレビュー」をクリックし、「***アプリ名***を公開しますか？」を「***はい***」にしておきます。
+
+![画像14](/readme-img/Screen14.png)
+
+* アプリをFacebookに結合する。
+  * 「Add Platform」をクリックしてAndroidのアプリを追加選択します。
+  * 「Key Hashes」欄に下記処理から値を取得・設定します。
+  * （Windowsの場合）コマンドプロンプトから次のコマンドを入力します。パスワードを聞かれますので 'android' と返します。
+  * このとき、opensslコマンドは「openssl場所」/bin/openssl.exeを指定しております。
+  * １行目でコマンドを、２行目でパスワードを入力し、３行目でKey Hashが表示されます。
 
 ```
-dependencies {
-    compile 'com.google.code.gson:gson:2.3.1'
-    compile files('libs/NCMB.jar')
-}
-```
-  - androidManifestの設定
-
-<application>タグの直前に以下のpermissionを追加します。
-
-```
-<uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+>keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.keystore | openssl sha1 -binary | openssl base64
+>キーストアのパスワードを入力してください: android
+>0QYXA5jGgnGg/wco7iNiEXYdeVw=
 ```
 
+![画像15](/readme-img/Screen15.png)
 
-# STEP 3. アプリキー設定
+* アプリをFacebookに結合設定が無い場合はログインエラーになります。
 
-* 会員登録（無料）をし、登録ができたらログインをすると下図のように「アプリの新規作成」画面出るのでアプリを作成します
-![003.png](https://qiita-image-store.s3.amazonaws.com/0/18698/366743e0-834f-7f3a-e4f8-0e224f260684.png)
-* アプリ作成されると下図のような画面になります
-* この２種類のAPIキー（アプリケーションキーとクライアントキー）は先ほどインポートしたAndroidStudioで作成するAndroidアプリにニフティクラウドmobile backendの紐付けるため、あとで使います.
-
-![004.png](https://qiita-image-store.s3.amazonaws.com/0/18698/19a7c03c-ee30-4273-707c-122d668ee89a.png)
-
-この後動作確認でデータが保存される場所も確認しておきましょう
-
-![005.png](https://qiita-image-store.s3.amazonaws.com/0/18698/736ec57c-cd46-18b6-34e9-70d0875ecf53.png)
-
-* AndroidStudioでの設定
-
-- MainActivityのAPIキー設定
-- /res/values/strings.xmlのFacebookアプリの設定
-Facebook アプリについての設定はこちらのURLを参考
-https://developers.facebook.com/docs/facebook-login/android
-https://developers.facebook.com/apps
+![画像LoginError](/readme-img/LoginError.png)
 
 
+### 6. 動作確認
 
-# STEP 4. 確認
+* AndroidStudioからビルドする。
+    * 「プロジェクト場所」\app\build\outputs\apk\ ***.apk ファイルが生成される。
+* apk ファイルをインストールしてシミュレーターが起動したら、Login画面が表示されます。
+* __Login__ ボタンをクリックします。
+* Facebookログインのブラウザが画面が表示されるのでしたがってログインを行います。
+* ログインに失敗した場合は画面にエラー内容が表示されます。(Facebookログインのブラウザ画面でキャンセルした場合は表示されません）
+ * 万が一エラーが発生した場合は、[こちら](http://mb.cloud.nifty.com/doc/current/rest/common/error.html)よりエラー内容を確認いただけます。
+* ログインに成功したらログアウトします。
 
-アプリにてボタンをタブし、保存成功！とメッセージが表示しました。
-![5554_Nexus_5_API_23_3.png](https://qiita-image-store.s3.amazonaws.com/0/18698/da17975f-6bc7-1665-2fbb-f12895088637.png)
-mBaaS側もデータが保存されたことを確認しています！
+![画像16](/readme-img/Screen16.png)
 
-![ニフティクラウドmobile_backend_7.png](https://qiita-image-store.s3.amazonaws.com/0/18698/b88029ab-f823-7964-2176-aafea0ab7b93.png)
+-----
+
+* 保存に成功したら、[ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)のダッシュボードから「会員管理」を確認してみましょう！
+* `authData`にはアクセストークンが保存されます。
+
+![画像17](/readme-img/Screen17.png)
+
+* [Facebook](https://www.facebook.com/)にログインしてアプリ設定欄から設定アプリ名ログイン記録が存在されます。
+
+![画像18](/readme-img/Screen18.png)
 
 
+操作はここまでです。
 
-# コード説明
+## 解説
+サンプルプロジェクトに実装済みの内容のご紹介
 
-* SDKおよび必要なライブラリーをインポートします
+#### SDKのインポートと初期設定
+* ニフティクラウドmobile backend の[Android ドキュメント（クイックスタート）](http://mb.cloud.nifty.com/doc/current/introduction/quickstart_android.html#/Android/)に開発中のアプリを連携する手順ご用意していますので、ご活用ください。
 
-```
-import com.nifty.cloud.mb.core.DoneCallback;
-import com.nifty.cloud.mb.core.NCMB;
-import com.nifty.cloud.mb.core.NCMBException;
-import com.nifty.cloud.mb.core.NCMBObject;
-```
+* [Android用Facebookログイン](https://developers.facebook.com/docs/facebook-login/android)と合わせてご活用ください。
 
-* SDKを初期化
-
-MainActivityのOnCreateメソッドに実装、ここでAPIキーを渡します。
+#### ロジック
+* FacebookSDKを使用するための処理を`MainActivity.java`に記述しています
 
 ```java
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.nifty.cloud.mb.core.NCMB;
+import com.nifty.cloud.mb.core.NCMBException;
+import com.nifty.cloud.mb.core.NCMBFacebookParameters;
+import com.nifty.cloud.mb.core.NCMBUser;
 
- @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
-       <省略>
+        super.onCreate(savedInstanceState);
         //**************** APIキーの設定とSDKの初期化 **********************
         NCMB.initialize(this, "YOUR_APPLICATION_KEY", "YOUR_CLIENT_KEY");
+
+        // Facebook settings
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        AppEventsLogger.activateApp(this);
+
+        callbackManager = CallbackManager.Factory.create();
+        LoginManager.getInstance().registerCallback(callbackManager,
+                new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+
+                        //Login to NIFTY Cloud mobile backend
+                        NCMBFacebookParameters parameters = new NCMBFacebookParameters(
+                                loginResult.getAccessToken().getUserId(),
+                                loginResult.getAccessToken().getToken(),
+                                loginResult.getAccessToken().getExpires()
+                        );
+                        try {
+                            NCMBUser.loginWith(parameters);
+                            Toast.makeText(getApplicationContext(), "Login to NIFTY Cloud mbaas with Facebook account", Toast.LENGTH_LONG).show();
+                        } catch (NCMBException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        // App code
+                        Log.d("tag", "onCancel");
+                    }
+
+                    @Override
+                    public void onError(FacebookException exception) {
+                        // App code
+                        Log.d("tag", "onError:" + exception);
+                    }
+                });
     }
 ```
 
-* データを保存する実装
-
-* mBaaSのAndroid SDKが提供するNCMBObjectクラスがデータストアを操作するためのクラス。データを保存するには、このクラスが提供するsaveInBackgroundメソッドを利用し、保存します。
-* NCMBObjectのインスタンスobjを作成し、"TestClass"を指定することで、データストアにTestClassクラスを操作することができます。
-* インスタンスobjに（キー、バリュー）というふうに、設定します。この場合、"キー"が"message", その"バリュー"が"Hello, NCMB!"として指定しています。
-* saveInBackground()を実施することで、非同期に保存が行われます。非同期実施するため、DoneCallBack()を使って、成功・失敗処理を指定します。
- - 成功する場合、アラートで保存したIDを合わせて表示します。
- - 失敗する場合、アラートでエラーを合わせて表示します。
+* Facebook連携はブラウザのFacebookページに遷移し、行われます。
+* Facebookログイン、ログアウトボタン押下時の処理は以下の`com.facebook.login.LoginManager.java`に記述しています
 
 ```java
 
-        final NCMBObject obj = new NCMBObject("TestClass");
-        obj.put("message", "Hello, NCMB!");
-        obj.saveInBackground(new DoneCallback() {
-            @Override
-            public void done(NCMBException e) {
-                if (e != null) {
-                    //保存失敗
-                    new AlertDialog.Builder(MainActivity.this)
-                            .setTitle("Notification from Nifty")
-                            .setMessage("Error:" + e.getMessage())
-                            .setPositiveButton("OK", null)
-                            .show();
+    // ログインボタン押下時の処理
+    boolean onActivityResult(int resultCode, Intent data, FacebookCallback<LoginResult>  callback) {
+        FacebookException exception = null;
+        AccessToken newToken = null;
+        LoginClient.Result.Code code = LoginClient.Result.Code.ERROR;
+        Map<String, String> loggingExtras = null;
+        LoginClient.Request originalRequest = null;
 
-                } else {
-                    //保存成功
-                    new AlertDialog.Builder(MainActivity.this)
-                            .setTitle("Notification from Nifty")
-                            .setMessage("Save successfull! with ID:" + obj.getObjectId())
-                            .setPositiveButton("OK", null)
-                            .show();
-
+        boolean isCanceled = false;
+        if (data != null) {
+            LoginClient.Result result =
+                    (LoginClient.Result) data.getParcelableExtra(LoginFragment.RESULT_KEY);
+            if (result != null) {
+                originalRequest = result.request;
+                code = result.code;
+                if (resultCode == Activity.RESULT_OK) {
+                    if (result.code == LoginClient.Result.Code.SUCCESS) {
+                        newToken = result.token;
+                    } else {
+                        exception = new FacebookAuthorizationException(result.errorMessage);
+                    }
+                } else if (resultCode == Activity.RESULT_CANCELED) {
+                    isCanceled = true;
                 }
+                loggingExtras = result.loggingExtras;
             }
-        });
+        } else if (resultCode == Activity.RESULT_CANCELED) {
+            isCanceled = true;
+            code = LoginClient.Result.Code.CANCEL;
+        }
+
+        if (exception == null && newToken == null && !isCanceled) {
+            exception = new FacebookException("Unexpected call to LoginManager.onActivityResult");
+        }
+
+        boolean wasLoginActivityTried = true;
+        Context context = null; //Sadly, there is no way to get activity context at this point.S
+        logCompleteLogin(
+                context,
+                code,
+                loggingExtras,
+                exception,
+                wasLoginActivityTried,
+                originalRequest);
+
+        finishLogin(newToken, originalRequest, exception, isCanceled, callback);
+
+        return true;
+    }
 ```
 
-# 参考
+```java
 
-サンプルコードをカスタマイズすることで、様々な機能を実装できます！
-データ保存・データ検索・会員管理・プッシュ通知などの機能を実装したい場合には、
-以下のドキュメントもご参考ください。
+    // ログアウトボタン押下時の処理
+    public void logOut() {
+        AccessToken.setCurrentAccessToken(null);
+        Profile.setCurrentProfile(null);
+    }
+```
 
-* [ドキュメント](http://mb.cloud.nifty.com/doc/current/)
-* [ドキュメント・データストア](http://mb.cloud.nifty.com/doc/current/datastore/basic_usage_android.html)
-* [ドキュメント・会員管理](http://mb.cloud.nifty.com/doc/current/user/basic_usage_android.html)
-* [ドキュメント・プッシュ通知](http://mb.cloud.nifty.com/doc/current/push/basic_usage_android.html)
+## 参考
+### FacebookSDKを使ってFacebook会員認証するのとニフティクラウドmobile backendSDKを使ってFacebook会員認証するのは何が違うのか？
 
-# 最後に
+![画像19](/readme-img/Screen19.png)
 
-データを保存するってサーバを立てたり、自分でサーバ運用とか、設計とか、アプリからサーバーとのやりとりも色々考慮しなければなりません。
-最短方法というのは、このようにmBaaSサービスを使って、運用、設計など自分でやらなくて済む、開発も数行コード書けばいいという便利なものはいかがでしょうか？
+* もちろん直接FacebookSDKを呼ぶことも可能ですが、ニフティクラウドmobile backendSDKを呼べば裏でFacebookSDKを呼んで処理するので、１つ呼べば、Facebookへのログインとニフティクラウドmobile backendへ会員情報保存が同時に行えるので一石二鳥というわけです。
+* また一度会員登録してしまえば、あとはニフティクラウドmobile backendの会員管理機能で処理が行えるので自前で会員管理システムを構築する必要がなくより楽に開発を行えます。
 
-# Contributing
-
-*    Fork it!
-*    Create your feature branch: git checkout -b my-new-feature
-*    Commit your changes: git commit -am 'Add some feature'
-*    Push to the branch: git push origin my-new-feature
-*    Submit a pull request :D
-
-# License
-
-    MITライセンス
-    NIFTY Cloud mobile backendのAndroid SDKのライセンス
+### もっと深く知りたい方へ
+* ニフティクラウドmobile backend の[ドキュメント（SNS連携：Facebook連携）](http://mb.cloud.nifty.com/doc/current/sns/facebook_android.html#/Android/)をご用意していますので、ご活用ください。
+* Facebook開発の [ドキュメント(Android用Facebookログイン)](https://developers.facebook.com/docs/facebook-login/android)参照ください。
