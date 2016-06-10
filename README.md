@@ -42,12 +42,12 @@
 
 ### 2. [GitHub](https://github.com/ncmbadmin/android_facebook_demo.git)からサンプルプロジェクトのダウンロード
 
-* プロジェクトの[Githubページ](https://github.com/ncmbadmin/android_facebook_demo.git)から「Download ZIP」をクリックします。
+* プロジェクトの[Githubページ](https://github.com/ncmbadmin/android_facebook_demo.git)から「Clone or download」＞「Download ZIP」をクリックします。
 * プロジェクトを解凍します。
 
 ### 3. AndroidStudioでアプリを起動
 
-* AndroidStudioを開きます、解凍プロジェクトを開くことを選択します。
+* AndroidStudioを開き、解凍したプロジェクトを選択します。
 
 ![画像6](/readme-img/Screen6.png)
 
@@ -64,7 +64,7 @@
 
 ### 5. FacebookSDKを使用するための準備と設定
 
-* [facebook for developers](https://developers.facebook.com/)にログイン（Facebookアカウントがない場合はアカウントを作成して）して、右上の「マイアプリ」からの「新しいアプリを追加」を選択します。
+* [facebook for developers](https://developers.facebook.com/)にログイン（Facebookアカウントがない場合はアカウントを作成）して、右上の「マイアプリ」からの「新しいアプリを追加」を選択します。
 
 ![画像10](/readme-img/Screen10.png)
 
@@ -126,9 +126,7 @@
     * 「プロジェクト場所」\app\build\outputs\apk\ ***.apk ファイルが生成される。
 * apk ファイルをインストールしてシミュレーターが起動したら、Login画面が表示されます。
 * __Login__ ボタンをクリックします。
-* Facebookログインのブラウザが画面が表示されるのでしたがってログインを行います。
-* ログインに失敗した場合は画面にエラー内容が表示されます。(Facebookログインのブラウザ画面でキャンセルした場合は表示されません）
- * 万が一エラーが発生した場合は、[こちら](http://mb.cloud.nifty.com/doc/current/rest/common/error.html)よりエラー内容を確認いただけます。
+* Facebookログインの画面（ブラウザ）が表示されるので、必要事項を入力し、ログインを行います。
 * ログインに成功したらログアウトします。
 
 ![画像16](/readme-img/Screen16.png)
@@ -140,7 +138,7 @@
 
 ![画像17](/readme-img/Screen17.png)
 
-* [Facebook](https://www.facebook.com/)にログインしてアプリ設定欄から設定アプリ名ログイン記録が存在されます。
+* [Facebook](https://www.facebook.com/)にログインして「アプリ」＞「アプリ設定」欄にログインの記録が保存されます。
 
 ![画像18](/readme-img/Screen18.png)
 
