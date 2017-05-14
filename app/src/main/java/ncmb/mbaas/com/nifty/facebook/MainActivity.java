@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //**************** APIキーの設定とSDKの初期化 **********************
-        NCMB.initialize(this, "YOUR_APPLICATION_KEY", "YOUR_CLIENT_KEY");
+        NCMB.initialize(this.getApplicationContext(), "YOUR_APPLICATION_KEY", "YOUR_CLIENT_KEY");
 
         // Facebook settings
         FacebookSdk.sdkInitialize(getApplicationContext());
