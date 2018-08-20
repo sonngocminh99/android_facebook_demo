@@ -190,7 +190,7 @@ import com.nifty.cloud.mb.core.NCMBUser;
                     @Override
                     public void onSuccess(LoginResult loginResult) {
 
-                        //Login to NIFTY Cloud mobile backend
+                        //Login to NIFCloud mobile backend
                         NCMBFacebookParameters parameters = new NCMBFacebookParameters(
                                 loginResult.getAccessToken().getUserId(),
                                 loginResult.getAccessToken().getToken(),
@@ -198,7 +198,7 @@ import com.nifty.cloud.mb.core.NCMBUser;
                         );
                         try {
                             NCMBUser.loginWith(parameters);
-                            Toast.makeText(getApplicationContext(), "Login to NIFTY Cloud mbaas with Facebook account", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Login to NIFCloud mbaas with Facebook account", Toast.LENGTH_LONG).show();
                         } catch (NCMBException e) {
                             e.printStackTrace();
                         }
