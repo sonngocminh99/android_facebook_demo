@@ -165,10 +165,10 @@ import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
-import com.nifty.cloud.mb.core.NCMB;
-import com.nifty.cloud.mb.core.NCMBException;
-import com.nifty.cloud.mb.core.NCMBFacebookParameters;
-import com.nifty.cloud.mb.core.NCMBUser;
+import com.nifcloud.mbaas.core.NCMB;
+import com.nifcloud.mbaas.core.NCMBException;
+import com.nifcloud.mbaas.core.NCMBFacebookParameters;
+import com.nifcloud.mbaas.core.NCMBUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
