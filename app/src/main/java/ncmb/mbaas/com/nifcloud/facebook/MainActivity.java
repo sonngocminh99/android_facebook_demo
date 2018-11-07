@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity  {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
 
-                        //Login to NIFCloud mobile backend
+                        //Login to NIFCLOUD mobile backend
                         NCMBFacebookParameters parameters = new NCMBFacebookParameters(
                                 loginResult.getAccessToken().getUserId(),
                                 loginResult.getAccessToken().getToken(),
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity  {
                         );
                         try {
                             NCMBUser.loginWith(parameters);
-                            Toast.makeText(getApplicationContext(), "Login to NIFCloud mbaas with Facebook account", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Login to NIFCLOUD mbaas with Facebook account", Toast.LENGTH_LONG).show();
                         } catch (NCMBException e) {
                             e.printStackTrace();
                         }

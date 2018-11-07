@@ -4,7 +4,7 @@
 ## 概要
 * [ニフクラ mobile backend](https://mbaas.nifcloud.com/)の『SNS連携（Facebook連携）』を利用して、Facebookのログイン機能を実装したサンプルプロジェクトです。
 * Facebook連携で取得した会員データは[ニフクラ mobile backend](https://mbaas.nifcloud.com/)の『会員管理機能』として扱うことができます。
- * [【Android】アプリのログイン機能](https://github.com/ncmbadmin/android_login_demo)も用意していますので、参照ください。
+ * [【Android】アプリのログイン機能](https://github.com/NIFCloud-mbaas/android_login_demo)も用意していますので、参照ください。
 * このコンテンツは簡単な操作ですぐに [ニフクラ mobile backend](https://mbaas.nifcloud.com/)の機能を体験いただけます。
 
 ## ニフクラ mobile backendについて
@@ -19,13 +19,14 @@
 * Facebook SDK 4.12.1
 * Android Studio 1.5
 * Android ver 4x,5x
+* Android SDK v3  
 
 ※上記内容で動作確認をしています。
 ※古いバージョンだと動作しない可能性があります。
 
 
 ## 手順
-### 1. [ニフクラ mobile backend](https://mbaas.nifcloud.com/)の会員登録とアプリ作成
+### 1. [ニフクラ mobile backend](https://mbaas.nifcloud.com/signup.htm)の会員登録とアプリ作成
 
 * 上記リンクから会員登録（無料）をします。登録ができたらログインをすると下図のように「アプリの新規作成」画面が出るのでアプリを作成します。
 
@@ -40,9 +41,9 @@
 
 ![画像5](/readme-img/Screen5.png)
 
-### 2. [GitHub](https://github.com/ncmbadmin/android_facebook_demo.git)からサンプルプロジェクトのダウンロード
+### 2. [GitHub](https://github.com/NIFCloud-mbaas/android_facebook_demo.git)からサンプルプロジェクトのダウンロード
 
-* プロジェクトの[Githubページ](https://github.com/ncmbadmin/android_facebook_demo.git)から「Clone or download」＞「Download ZIP」をクリックします。
+* プロジェクトの[Githubページ](https://github.com/NIFCloud-mbaas/android_facebook_demo.git)から「Clone or download」＞「Download ZIP」をクリックします。
 * プロジェクトを解凍します。
 
 ### 3. AndroidStudioでアプリを起動
