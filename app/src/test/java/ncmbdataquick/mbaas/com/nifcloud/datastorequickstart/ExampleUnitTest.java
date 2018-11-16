@@ -1,4 +1,4 @@
-package ncmb.mbaas.com.nifty.facebook;
+package ncmb.mbaas.com.nifcloud.facebook;
 
 import org.junit.Test;
 

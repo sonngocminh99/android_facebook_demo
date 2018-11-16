@@ -1,16 +1,12 @@
-package ncmb.mbaas.com.nifty.facebook;
+package ncmb.mbaas.com.nifcloud.facebook;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.facebook.CallbackManager;
@@ -19,15 +15,12 @@ import com.facebook.FacebookException;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
-import com.nifty.cloud.mb.core.DoneCallback;
-import com.nifty.cloud.mb.core.NCMB;
-import com.nifty.cloud.mb.core.NCMBException;
-import com.nifty.cloud.mb.core.NCMBFacebookParameters;
-import com.nifty.cloud.mb.core.NCMBObject;
 
 import com.facebook.FacebookSdk;
-import com.nifty.cloud.mb.core.NCMBUser;
+import com.nifcloud.mbaas.core.NCMB;
+import com.nifcloud.mbaas.core.NCMBException;
+import com.nifcloud.mbaas.core.NCMBFacebookParameters;
+import com.nifcloud.mbaas.core.NCMBUser;
 
 public class MainActivity extends AppCompatActivity  {
 
@@ -53,7 +46,7 @@ public class MainActivity extends AppCompatActivity  {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
 
-                        //Login to NIFTY Cloud mobile backend
+                        //Login to NIFCLOUD mobile backend
                         NCMBFacebookParameters parameters = new NCMBFacebookParameters(
                                 loginResult.getAccessToken().getUserId(),
                                 loginResult.getAccessToken().getToken(),
@@ -61,7 +54,7 @@ public class MainActivity extends AppCompatActivity  {
                         );
                         try {
                             NCMBUser.loginWith(parameters);
-                            Toast.makeText(getApplicationContext(), "Login to NIFTY Cloud mbaas with Facebook account", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Login to NIFCLOUD mbaas with Facebook account", Toast.LENGTH_LONG).show();
                         } catch (NCMBException e) {
                             e.printStackTrace();
                         }
