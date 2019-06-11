@@ -17,9 +17,9 @@
 ## 動作環境
 * Windows 7 Professional
 * Facebook SDK 4.12.1
-* Android Studio 1.5
+* Android Studio 3.4.1
 * Android ver 4x,5x
-* Android SDK v3  
+* Android SDK v3.0.2  
 
 ※上記内容で動作確認をしています。
 ※古いバージョンだと動作しない可能性があります。
@@ -175,7 +175,7 @@ import com.nifcloud.mbaas.core.NCMBUser;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //**************** APIキーの設定とSDKの初期化 **********************
-        NCMB.initialize(this, "YOUR_APPLICATION_KEY", "YOUR_CLIENT_KEY");
+        NCMB.initialize(this.getApplicationContext(), "YOUR_APPLICATION_KEY", "YOUR_CLIENT_KEY");
 
         // Facebook settings
         FacebookSdk.sdkInitialize(getApplicationContext());
