@@ -15,14 +15,12 @@
 ![画像2](/readme-img/Screen2.png)
 
 ## 動作環境
-* Windows 7 Professional
-* Facebook SDK 4.12.1
-* Android Studio 3.4.1
-* Android ver 4x,5x
-* Android SDK v3.0.2  
+* MacOS Mojave v10.14.6 (18G103)
+* Android studio: 3.4.1
+* Simulator: Pixel 2 Android OS Version 10
+* Unity 2019.1.14f1
 
 ※上記内容で動作確認をしています。
-※古いバージョンだと動作しない可能性があります。
 
 
 ## 手順
