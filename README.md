@@ -91,7 +91,10 @@
 
 ![画像9](/readme-img/Screen9.png)
 
-* 最後に「アプリレビュー」をクリックし、「***アプリ名***を公開しますか？」を「***はい***」にしておきます。
+* 最後に「Basic」をクリックし、「Privacy policy URL」 を貼って、「Save」ボタンを押します。
+* その後、上の「In development」にSwitchしますし、ポップアップの「Switch mode」を選びます。
+これでアプリの公開は完了します。
+
 
 ![画像14](/readme-img/Screen14.png)
 
