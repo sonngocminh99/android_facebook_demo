@@ -73,10 +73,7 @@
 ![画像11](/readme-img/Screen11.png)
 
 * 「Quick Start for Android」の画面が出ます。
-* 一番右上の「Skip Quick Start」をクリックします。
-
-![画像12](/readme-img/Screen12.png)
-
+* 「Quick Start for Android」をスキップします。
 * ダッシュボードが表示されます。
   * `アプリID`を記憶します。
 
