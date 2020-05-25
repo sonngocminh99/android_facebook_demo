@@ -4,7 +4,7 @@
 ## 概要
 * [ニフクラ mobile backend](https://mbaas.nifcloud.com/)の『SNS連携（Facebook連携）』を利用して、Facebookのログイン機能を実装したサンプルプロジェクトです。
 * Facebook連携で取得した会員データは[ニフクラ mobile backend](https://mbaas.nifcloud.com/)の『会員管理機能』として扱うことができます。
- * [【Android】アプリのログイン機能](https://github.com/NIFCloud-mbaas/android_login_demo)も用意していますので、参照ください。
+ * [【Android】アプリのログイン機能](https://github.com/NIFCLOUD-mbaas/android_login_demo)も用意していますので、参照ください。
 * このコンテンツは簡単な操作ですぐに [ニフクラ mobile backend](https://mbaas.nifcloud.com/)の機能を体験いただけます。
 
 ## ニフクラ mobile backendについて
@@ -15,14 +15,11 @@
 ![画像2](/readme-img/Screen2.png)
 
 ## 動作環境
-* Windows 7 Professional
-* Facebook SDK 4.12.1
-* Android Studio 1.5
-* Android ver 4x,5x
-* Android SDK v3  
+* MacOS Mojave v10.14.6 (18G103)
+* Android studio: 3.4.1
+* Simulator: Pixel 2 Android OS Version 10
 
 ※上記内容で動作確認をしています。
-※古いバージョンだと動作しない可能性があります。
 
 
 ## 手順
@@ -41,9 +38,9 @@
 
 ![画像5](/readme-img/Screen5.png)
 
-### 2. [GitHub](https://github.com/NIFCloud-mbaas/android_facebook_demo.git)からサンプルプロジェクトのダウンロード
+### 2. [GitHub](https://github.com/NIFCLOUD-mbaas/android_facebook_demo.git)からサンプルプロジェクトのダウンロード
 
-* プロジェクトの[Githubページ](https://github.com/NIFCloud-mbaas/android_facebook_demo.git)から「Clone or download」＞「Download ZIP」をクリックします。
+* プロジェクトの[Githubページ](https://github.com/NIFCLOUD-mbaas/android_facebook_demo.git)から「Clone or download」＞「Download ZIP」をクリックします。
 * プロジェクトを解凍します。
 
 ### 3. AndroidStudioでアプリを起動
@@ -76,10 +73,7 @@
 ![画像11](/readme-img/Screen11.png)
 
 * 「Quick Start for Android」の画面が出ます。
-* 一番右上の「Skip Quick Start」をクリックします。
-
-![画像12](/readme-img/Screen12.png)
-
+* 「Quick Start for Android」をスキップします。
 * ダッシュボードが表示されます。
   * `アプリID`を記憶します。
 
@@ -97,7 +91,10 @@
 
 ![画像9](/readme-img/Screen9.png)
 
-* 最後に「アプリレビュー」をクリックし、「***アプリ名***を公開しますか？」を「***はい***」にしておきます。
+* 最後に「Basic」をクリックし、「Privacy policy URL」 を貼って、「Save」ボタンを押します。
+* その後、上の「In development」にSwitchしますし、ポップアップの「Switch mode」を選びます。
+これでアプリの公開は完了します。
+
 
 ![画像14](/readme-img/Screen14.png)
 
@@ -175,7 +172,7 @@ import com.nifcloud.mbaas.core.NCMBUser;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //**************** APIキーの設定とSDKの初期化 **********************
-        NCMB.initialize(this, "YOUR_APPLICATION_KEY", "YOUR_CLIENT_KEY");
+        NCMB.initialize(this.getApplicationContext(), "YOUR_APPLICATION_KEY", "YOUR_CLIENT_KEY");
 
         // Facebook settings
         FacebookSdk.sdkInitialize(getApplicationContext());
