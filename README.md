@@ -62,22 +62,25 @@
 
 ### 5. FacebookSDKを使用するための準備と設定
 
-* [facebook for developers](https://developers.facebook.com/)にログイン（Facebookアカウントがない場合はアカウントを作成）して、右上の「マイアプリ」からの「新しいアプリを追加」を選択します。
+* Đăng nhập vào [facebook for developers](https://developers.facebook.com/) và truy cập vào [My app](https://developers.facebook.com/apps/) sau đó nhấn vào `Create App` để tạo ứng dụng mới.
 
-![画像10](/readme-img/Screen10.png)
+![画像0001](/readme-img/fb_0001.png)
 
-* Androidを選択し、アプリ名（任意）を入力し、「新しいFacebookアプリIDを作成」をクリックします。
-* 「連絡先メールアドレス」と「カテゴリ」を入力して「アプリIDを作成」をクリックしてFacebookアプリを作成します。
-* Securityチェック欄には質問の対象画像を全て選択し、「確定」をクリックします。
+* Tiếp theo nhấn chọn vào `Build Connected Experiences` và nhấn vào nút `Continue` để tiếp tục:
 
-![画像11](/readme-img/Screen11.png)
+![画像0002](/readme-img/fb_0002.png)
 
-* 「Quick Start for Android」の画面が出ます。
-* 「Quick Start for Android」をスキップします。
-* ダッシュボードが表示されます。
-  * `アプリID`を記憶します。
+* Nhập tên ứng dụng của bạn vào `App Display Name` và nhấn `Create App`
 
-![画像13](/readme-img/Screen13.png)
+![画像0003](/readme-img/fb_0003.png)
+
+* Chứng thực `Security Check` , Nhấn `Verify` và nhấn `Submit`.
+
+![画像0004](/readme-img/fb_0004.png)
+
+* Màn hình quản lí ứng dụng của bạn sẽ xuất hiện. 
+
+![画像0005](/readme-img/fb_0005.png)
 
 * `アプリID`の設定します。
   * `/app/src/main/res/values/strings.xml`を編集します。
