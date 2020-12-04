@@ -62,23 +62,24 @@
 
 ### 5. FacebookSDKを使用するための準備と設定
 
-* Đăng nhập vào [facebook for developers](https://developers.facebook.com/) và truy cập vào [My app](https://developers.facebook.com/apps/) sau đó nhấn vào `Create App` để tạo ứng dụng mới.
+* [facebook for developers](https://developers.facebook.com/)にログイン（Facebookアカウントがない場合はアカウントを作成）して、右上の「マイアプリ」からの「新しいアプリを追加」を選択します。
+
 
 ![画像0001](/readme-img/fb_0001.png)
 
-* Tiếp theo nhấn chọn vào `Build Connected Experiences` và nhấn vào nút `Continue` để tiếp tục:
+* `Build Connected Experiences`を選択して、`Continue`で続きます。
 
 ![画像0002](/readme-img/fb_0002.png)
 
-* Nhập tên ứng dụng của bạn vào `App Display Name` và nhấn `Create App`
+* アプリ名を`App Display Name`に入力してから`Create App`でアプリを作ります。
 
 ![画像0003](/readme-img/fb_0003.png)
 
-* Chứng thực `Security Check` , Nhấn `Verify` và nhấn `Submit`.
+* `Security Check`の認証のところで`Verify`したら、`Submit`で完了します。
 
 ![画像0004](/readme-img/fb_0004.png)
 
-* Màn hình quản lí ứng dụng của bạn sẽ xuất hiện. 
+* アプリ管理の画面で作成したアプリが確認できます。
 
 ![画像0005](/readme-img/fb_0005.png)
 
