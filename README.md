@@ -64,20 +64,24 @@
 
 * [facebook for developers](https://developers.facebook.com/)にログイン（Facebookアカウントがない場合はアカウントを作成）して、右上の「マイアプリ」からの「新しいアプリを追加」を選択します。
 
-![画像10](/readme-img/Screen10.png)
 
-* Androidを選択し、アプリ名（任意）を入力し、「新しいFacebookアプリIDを作成」をクリックします。
-* 「連絡先メールアドレス」と「カテゴリ」を入力して「アプリIDを作成」をクリックしてFacebookアプリを作成します。
-* Securityチェック欄には質問の対象画像を全て選択し、「確定」をクリックします。
+![画像0001](/readme-img/fb_0001.png)
 
-![画像11](/readme-img/Screen11.png)
+* `Build Connected Experiences`を選択して、`Continue`で続きます。
 
-* 「Quick Start for Android」の画面が出ます。
-* 「Quick Start for Android」をスキップします。
-* ダッシュボードが表示されます。
-  * `アプリID`を記憶します。
+![画像0002](/readme-img/fb_0002.png)
 
-![画像13](/readme-img/Screen13.png)
+* アプリ名を`App Display Name`に入力してから`Create App`でアプリを作ります。
+
+![画像0003](/readme-img/fb_0003.png)
+
+* `Security Check`の認証のところで`Verify`したら、`Submit`で完了します。
+
+![画像0004](/readme-img/fb_0004.png)
+
+* アプリ管理の画面で作成したアプリが確認できます。
+
+![画像0005](/readme-img/fb_0005.png)
 
 * `アプリID`の設定します。
   * `/app/src/main/res/values/strings.xml`を編集します。
