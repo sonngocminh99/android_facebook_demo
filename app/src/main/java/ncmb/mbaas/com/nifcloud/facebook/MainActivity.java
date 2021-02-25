@@ -2,12 +2,13 @@ package ncmb.mbaas.com.nifcloud.facebook;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -22,7 +23,7 @@ import com.nifcloud.mbaas.core.NCMBException;
 import com.nifcloud.mbaas.core.NCMBFacebookParameters;
 import com.nifcloud.mbaas.core.NCMBUser;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity {
 
     CallbackManager callbackManager;
 
