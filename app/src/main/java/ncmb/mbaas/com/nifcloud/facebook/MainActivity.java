@@ -18,10 +18,13 @@ import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 
 import com.facebook.FacebookSdk;
+import com.facebook.login.widget.LoginButton;
 import com.nifcloud.mbaas.core.NCMB;
 import com.nifcloud.mbaas.core.NCMBException;
 import com.nifcloud.mbaas.core.NCMBFacebookParameters;
 import com.nifcloud.mbaas.core.NCMBUser;
+
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,42 +43,52 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        LoginButton loginButton = (LoginButton) findViewById(R.id.login_button);
         setSupportActionBar(toolbar);
 
         //AppEventsLogger.activateApp(this); replace with the following code
         AppEventsLogger.activateApp(getApplication());
+
         callbackManager = CallbackManager.Factory.create();
-        LoginManager.getInstance().registerCallback(callbackManager,
-                new FacebookCallback<LoginResult>() {
-                    @Override
-                    public void onSuccess(LoginResult loginResult) {
 
-                        //Login to NIFCLOUD mobile backend
-                        NCMBFacebookParameters parameters = new NCMBFacebookParameters(
-                                loginResult.getAccessToken().getUserId(),
-                                loginResult.getAccessToken().getToken(),
-                                loginResult.getAccessToken().getExpires()
-                        );
-                        try {
-                            NCMBUser.loginWith(parameters);
-                            Toast.makeText(getApplicationContext(), "Login to NIFCLOUD mbaas with Facebook account", Toast.LENGTH_LONG).show();
-                        } catch (NCMBException e) {
-                            e.printStackTrace();
-                        }
-                    }
+        // set login button permissions
+        loginButton.setPermissions(Arrays.asList("public_profile", "email"));
 
-                    @Override
-                    public void onCancel() {
-                        // App code
-                        Log.d("tag", "onCancel");
-                    }
+        //register callback login
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
 
-                    @Override
-                    public void onError(FacebookException exception) {
-                        // App code
-                        Log.d("tag", "onError:" + exception);
-                    }
-                });
+                //Login to NIFCLOUD mobile backend
+                NCMBFacebookParameters parameters = new NCMBFacebookParameters(
+                        loginResult.getAccessToken().getUserId(),
+                        loginResult.getAccessToken().getToken(),
+                        loginResult.getAccessToken().getExpires()
+                );
+
+                try {
+
+                    NCMBUser.loginWith(parameters);
+                    Toast.makeText(getApplicationContext(), "Login to NIFCLOUD mbaas with Facebook account", Toast.LENGTH_LONG).show();
+
+                } catch (NCMBException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onCancel() {
+                // App code
+                Log.d("tag", "onCancel");
+            }
+
+            @Override
+            public void onError(FacebookException exception) {
+                // App code
+                Log.d("tag", "onError:" + exception);
+            }
+        });
+
     }
 
     @Override
@@ -87,8 +100,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
