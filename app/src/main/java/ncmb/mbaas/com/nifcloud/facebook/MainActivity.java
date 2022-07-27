@@ -29,13 +29,12 @@ import java.util.Arrays;
 public class MainActivity extends AppCompatActivity {
 
     CallbackManager callbackManager;
-    final String APP_KEY = "2bfb444423219ff54256bbe41ff270c5d8c3e81eaa3121c18603363e99b0b673";
-    final String CLIENT_KEY = "2e0167555ae06b73a73a8b2ef1ea9614d566b17cb7c0d191da80797221088bf2";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //**************** APIキーの設定とSDKの初期化 **********************
-        NCMB.initialize(this.getApplicationContext(), APP_KEY, CLIENT_KEY);
+        NCMB.initialize(this.getApplicationContext(), "YOUR_APP_KEY", "YOUR_CLIENT_KEY");
 
         // Facebook settings
         // add client token in AndroidManifest.xml before init facebook sdk

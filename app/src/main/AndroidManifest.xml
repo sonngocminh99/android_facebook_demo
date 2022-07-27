@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <meta-data android:name="com.facebook.sdk.ClientToken" android:value="48be8b5dd6605f38990a4fcec4134e5d"/>
+        <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token"/>
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
         <activity
             android:name="ncmb.mbaas.com.nifcloud.facebook.MainActivity"
